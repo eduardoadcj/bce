@@ -12,3 +12,9 @@ create table cidade (
 
 alter table cidade add constraint fk_cidade_estado
 foreign key (estado_id) references estado (id);
+
+create table historico (
+    id bigint not null auto_increment primary key,
+    ultima_atualizacao datetime not null,
+    fonte varchar(255)
+)

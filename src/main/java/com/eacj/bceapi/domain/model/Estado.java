@@ -1,15 +1,11 @@
 
 package com.eacj.bceapi.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
 
 @Entity
 public class Estado {
@@ -20,10 +16,6 @@ public class Estado {
     
     private String nome;
     private String uf;
-    
-    @Transient
-    @JsonInclude(Include.NON_NULL)
-    private List<CidadeEstado> cidades;
 
     public Long getId() {
         return id;
@@ -47,14 +39,6 @@ public class Estado {
 
     public void setUf(String uf) {
         this.uf = uf;
-    }
-
-    public List<CidadeEstado> getCidades() {
-        return cidades;
-    }
-
-    public void setCidades(List<CidadeEstado> cidades) {
-        this.cidades = cidades;
     }
     
     @Override

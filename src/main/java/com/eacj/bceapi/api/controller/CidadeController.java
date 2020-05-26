@@ -1,9 +1,12 @@
 
 package com.eacj.bceapi.api.controller;
 
+import com.eacj.bceapi.api.model.CidadeModel;
 import com.eacj.bceapi.domain.model.Cidade;
 import com.eacj.bceapi.domain.repository.CidadeRepository;
 import java.util.List;
+import java.util.stream.Collectors;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,15 +19,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class CidadeController {
 
     @Autowired
+    private ModelMapper modelMapper;
+    
+    @Autowired
     private CidadeRepository cidadeRepository;
     
     @GetMapping
-    public List<Cidade> listar() {
-        return cidadeRepository.findAll();
+    public List<CidadeModel> listar() {
+        return toCollectionModel(cidadeRepository.findAll());
     }
     
     @GetMapping("/{uf}")
-    public ResponseEntity<List<Cidade>> listar(@PathVariable String uf){
+    public ResponseEntity<List<CidadeModel>> listar(@PathVariable String uf){
         
         if(uf.length() != 2)
             return ResponseEntity.badRequest().build();
@@ -36,8 +42,18 @@ public class CidadeController {
         if(list.isEmpty())
             return ResponseEntity.notFound().build();
         
-        return ResponseEntity.ok(list);
+        return ResponseEntity.ok(toCollectionModel(list));
         
+    }
+    
+    private CidadeModel toModel(Cidade cidade){
+        return modelMapper.map(cidade, CidadeModel.class);
+    }
+    
+    private List<CidadeModel> toCollectionModel(List<Cidade> cidades){
+        return cidades.stream()
+                .map(cidade -> toModel(cidade))
+                .collect(Collectors.toList());
     }
     
 }

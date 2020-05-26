@@ -1,12 +1,12 @@
 
-package com.eacj.bceapi.domain.model;
+package com.eacj.bceapi.api.model;
 
-public class CidadeEstado {
+public class CidadeEstadoModel {
     
     private Long id;
     private String nome;
 
-    public CidadeEstado(Long id, String nome) {
+    public CidadeEstadoModel(Long id, String nome) {
         this.id = id;
         this.nome = nome;
     }

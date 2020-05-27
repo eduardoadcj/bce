@@ -7,7 +7,7 @@ dados internamente na aplicação ou lidar com APIs que possuem uma estrutura de
 A base de dados foi alimentada usando como fonte de dados a [API de localidades do IBGE](https://servicodados.ibge.gov.br/api/docs/localidades?versao=1)
 
 ## Como utilizar
-A ferramenta esta disponível atualmente no endereço:
+Disponível atualmente no endereço:
 ```
 http://eacjserver.ddns.net:8450/bce
 ```

@@ -92,7 +92,7 @@ Em status 200, retorna uma lista na estrutura de dados a seguir:
 
 ## Tecnologias
 
-Desenvolvido utilizando a linguagem Java e a base de dados MySQL. Foram utilizadas para desenvolvimento as bibliotecas e frameworks:
+Desenvolvido utilizando a linguagem Java e a base de dados MySQL, além dos frameworks e bibliotecas:
 
 - Spring Boot
 - Spring Data JPA

@@ -28,7 +28,7 @@ public class CidadeController {
     
     @GetMapping
     public List<CidadeModel> listar() {
-        return toCollectionModel(cidadeRepository.findAll());
+        return toCollectionModel(cidadeRepository.findAllByOrderByNomeAsc());
     }
     
     @GetMapping("/{uf}")
@@ -39,7 +39,7 @@ public class CidadeController {
         
         uf = uf.toUpperCase();
         
-        List<Cidade> list = cidadeRepository.findByEstadoUf(uf);
+        List<Cidade> list = cidadeRepository.findByEstadoUfOrderByNomeAsc(uf);
         
         if(list.isEmpty())
             return ResponseEntity.notFound().build();

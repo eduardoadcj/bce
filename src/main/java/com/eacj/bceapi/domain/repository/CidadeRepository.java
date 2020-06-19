@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CidadeRepository extends JpaRepository<Cidade, Long> {
-    List<Cidade> findByEstadoId(long id);
-    List<Cidade> findByEstadoUf(String uf);
+    List<Cidade> findAllByOrderByNomeAsc();
+    List<Cidade> findByEstadoIdOrderByNomeAsc(long id);
+    List<Cidade> findByEstadoUfOrderByNomeAsc(String uf);
 }

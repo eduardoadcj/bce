@@ -33,16 +33,16 @@ public class EstadoController {
     
     @GetMapping
     public List<EstadoModel> listar(){
-        return toCollectionModel(estadoRepository.findAll());
+        return toCollectionModel(estadoRepository.findAllByOrderByNomeAsc());
     }
     
     @GetMapping("/cidades")
     public List<EstadoModel> listarCidades(){
         
-        List<EstadoModel> list = toCollectionModel(estadoRepository.findAll());
+        List<EstadoModel> list = toCollectionModel(estadoRepository.findAllByOrderByNomeAsc());
         
         for(EstadoModel e : list){
-            List<Cidade> cidades = cidadeRepository.findByEstadoUf(e.getUf());
+            List<Cidade> cidades = cidadeRepository.findByEstadoUfOrderByNomeAsc(e.getUf());
             List<CidadeEstadoModel> cidadesEstado = new ArrayList<>();
             for(Cidade c : cidades)
                 cidadesEstado.add(new CidadeEstadoModel(c.getId(), c.getNome()));
